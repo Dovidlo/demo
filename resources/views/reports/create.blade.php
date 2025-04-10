@@ -10,9 +10,11 @@
         <div>
             <x-input-label for="service_id" :value="__('Выберите услугу')" />
             <select id="service_id" name="service_id" class="block mt-1" required>
-                <option value="" disabled selected>-- Выберите услугу --</option>
+                <option value="" disabled {{ is_null($selectedId) ? 'selected' : '' }}>-- Выберите услугу --</option>
                 @foreach($services as $service)
-                    <option value="{{ $service->id }}">{{ $service->title }}</option>
+                    <option value="{{ $service->id }}" {{ $service->id == $selectedId ? 'selected' : '' }}>
+                        {{ $service->title }}
+                    </option>
                 @endforeach
             </select>
             <x-input-error :messages="$errors->get('service_id')" class="mt-2" />

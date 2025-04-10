@@ -16,9 +16,12 @@ class ServiceController extends Controller
         $services = Service::all();
         return view('welcome', compact('services'));
     }
-    public function create() {
+    public function create(Request $request) {
         $services = Service::all();
-        return view('reports.create', compact('services'));
+
+        // айди при выборе карточки чтобы на страницу create было
+        $selectedId = $request->get('service_id');
+        return view('reports.create', compact('services', 'selectedId'));
     }
 
 }

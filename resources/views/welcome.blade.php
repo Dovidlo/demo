@@ -878,15 +878,15 @@
             <p>В компьютерной игре вы играете за героя, у нас - вы и есть герой!</p>
 
             @foreach ($services as $service)
-                <div class='div-col border border-gray-500  rounded-lg p-6 mt-4 w-80'>
-                    <span class='text-xl font-semibold	'>{{ $service->title }}</span>
+                <div class='div-col border border-gray-500 rounded-lg p-6 mt-4 w-80'>
+                    <span class='text-xl font-semibold'>{{ $service->title }}</span>
                     <p class='text-blue-500'>{{ $service->description }}</p>
                     <img src="{{ asset($service->path_img) }}" alt="Эскапе" style="max-width: 300px;">
                     <p class='text-blue-500'>{{ $service->price }}</p>
                     <br>
                     @if (Route::has('login'))
                         @auth
-                            <a href="{{ route('reports.create') }}"
+                            <a href="{{ route('reports.create', ['service_id' => $service->id]) }}"
                                 class="font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Забронировать</a>
                         @endauth
                     @else
@@ -894,42 +894,10 @@
                 </div>
             @endforeach
 
-            {{-- контент для главной страницы --}}
+            
 
 
-            {{--
-            1) https://github.com/Dovidlo/laravel-demo
-            3) cd laravel-pattern
-            4) composer update
-            3) npm i
-            4) копиировать env
-            5) в env задать имя прииложениия и название bd
-            6) php artisan key:generate
-            7) npm run dev
-            8) php artisan serve
-            9)
-            git init
-            git add .
-            git commit -m "Хайруллин Давид Сухробович init project"
-            git branch -M main
-            git remote add origin https://github.com/Dovidlo/demo.git
-            git push -u origin main
-            10) запустить ксамп
-
-            создать новую модель с миграцей
-            php artisan make:model NAME -m
-            php artisan make:controller NAME
-            Изменить миграции по фото
-            Для регистрации нужно искать в файликах (http-controllers-registered, resources-views-auth,
-            http-request-auth)
-            Поменять название сайта (config-app, views-layouts) 
-
-            Картинки кидать в public-images
-            'path_img' => './images/эскапе.jpg',
-            <img src="{{ asset($tour->path_img) }}" alt="Эскапе" style="max-width: 300px;">
-
-
-            1. заносим проект в htdocs
+            {{-- 1. заносим проект в htdocs
             2. настроить файл - D:\xampp\apache\conf\extra\httpd-vhosts.conf
             <VirtualHost *:80>
                 DocumentRoot "D:/xampp/htdocs/laravel/public" ## <- путь до вашего проекта, в папку /public
@@ -937,8 +905,8 @@
             </VirtualHost>
             3. запустить проект (apache, mysql, php artisan serve, npm run build (!!!)
             4. перезагрузить нахер xamp
-            5. скинуть свой ip
-            --}}
+            5. скинуть свой ip --}}
+
         </div>
     </div>
 </body>
