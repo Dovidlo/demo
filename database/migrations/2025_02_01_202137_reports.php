@@ -13,11 +13,14 @@ return new class extends Migration
     {
         Schema::create('reports', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('description');
-            $table->foreignId('user_id')->constrained(); //->unique(); если надо только 1 заявку от пользователя
-            $table->string('path_img')->nullable();
+            $table->date('date');
+            $table->time('time')->nullable();
+            $table->string('number');
+            $table->string('payment');
+            $table->string('reason')->nullable();
             $table->enum('status', ['Новая', 'Одобрена', 'Отменена']);
+            $table->foreignId('user_id')->constrained();
+            $table->foreignId('service_id')->constrained();
             $table->timestamps();
         });
     }

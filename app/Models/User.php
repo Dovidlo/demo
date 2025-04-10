@@ -24,7 +24,7 @@ class User extends Authenticatable
     }
 
     public function fullName(){
-        return $this->name.' '.$this->middlename.' '.$this->lastname;
+        return $this->name.' '.$this->lastname;
     }
 
     /**
@@ -34,9 +34,7 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
-        'middlename',
         'lastname',
-        'login',
         'tel',
         'email',
         'password',

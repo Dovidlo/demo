@@ -25,27 +25,24 @@ class ReportController extends Controller
     }
 
     public function store(Request $request): RedirectResponse {
-        // if (Report::where('user_id', Auth::id())->exists()) {
-        //     return redirect()->back()->withErrors(['report' => 'Вы уже создали заявку.']);
-        // } ПРОВЕРКА УНИКАЛЬНОСТИ
-
         $request->validate([
-            'title' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string'],
-            'path_img' => 'image|mimes:png,jpg,jpeg,gif|max:800',
+            'date' => ['required', 'date'],
+            'time' => ['required', 'date_format:H:i'],
+            'number' => ['required', 'string', 'max:255'],
+            'payment' => ['required', 'string', 'max:255'],
+            'service_id' => 'required|exists:services,id',
         ]);
-
-        $imageName = time() . '.' . $request['path_img']->extension();
-        $request['path_img']->move(public_path('images'), $imageName);
-
+    
         Report::create([
-            'title' => $request->title,
-            'description' => $request->description,
-            'path_img' => $imageName,
-            "user_id" => Auth::user()->id,
-            "status" => "Новая",
+            'date' => $request->date,
+            'time' => $request->time,
+            'number' => $request->number,
+            'payment' => $request->payment,
+            'service_id' => $request->service_id,
+            'user_id' => Auth::user()->id,
+            'status' => "Новая",
         ]);
-
+    
         return redirect()->route('dashboard');
     }
 

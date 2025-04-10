@@ -9,21 +9,9 @@
         </div>
 
         <div>
-            <x-input-label for="middlename" :value="__('Фамилия')" />
-            <x-text-input id="middlename" class="block mt-1 w-full" type="text" name="middlename" :value="old('middlename')" required autofocus autocomplete="middlename" />
-            <x-input-error :messages="$errors->get('middlename')" class="mt-2" />
-        </div>
-
-        <div>
-            <x-input-label for="lastname" :value="__('Отчество')" />
+            <x-input-label for="lastname" :value="__('Фамилия')" />
             <x-text-input id="lastname" class="block mt-1 w-full" type="text" name="lastname" :value="old('lastname')" required autofocus autocomplete="lastname" />
             <x-input-error :messages="$errors->get('lastname')" class="mt-2" />
-        </div>
-
-        <div>
-            <x-input-label for="login" :value="__('Логин')" />
-            <x-text-input id="login" class="block mt-1 w-full" type="text" name="login" :value="old('login')" required autofocus autocomplete="login" />
-            <x-input-error :messages="$errors->get('login')" class="mt-2" />
         </div>
 
         <div>

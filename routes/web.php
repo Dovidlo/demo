@@ -3,11 +3,13 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReportController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\ServiceController;
 use App\Http\Middleware\Admin;
 use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', [ReportController::class, 'welcome'])->name('welcome');
+Route::get('/', [ServiceController::class, 'index'])->name('welcome');
 Route::get('/dashboard', [ReportController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -18,6 +20,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/store', [ReportController::class, 'store'])->name('reports.store');
     Route::get('/create', [ReportController::class, 'create'])->name('reports.create');
+    Route::get('/create', [ServiceController::class, 'create'])->name('reports.create');
 });
 
 Route::middleware((Admin::class))->group(function(){
