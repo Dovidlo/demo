@@ -13,6 +13,7 @@
                         <p class="text-sm text-gray-500">Дата подачи заявки:
                             {{ \Carbon\Carbon::parse($report->created_at)->translatedFormat('j F Y') }}</p> <br>
                         <p class="text-xl text-black font-semibold">Пользователь: {{ $report->user->fullName() }}</p>
+                        <p class="text-xl text-black font-semibold">Номер телефона: {{ $report->tel }}</p>
                         <span class='text-xl font-semibold	'>Услуга: {{ $report->service->title }}</span> <br>
                         <span class='text-xl font-semibold	'>Количество участников: {{ $report->number }}</span> <br>
                         <span class='text-xl font-semibold	'>Дата и время: {{ $report->date }}
